@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  schedule:
+    - cron: "0 2 * * 1"
+  workflow_dispatch:
+
+jobs:
+  update:
+    name: Upgrade hook
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+    - run: pip install pre-commit-mirror-maker
+    - run: git config --global user.name 'Github Actions'
+    - run: git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+    - run: |
+        pre-commit-mirror . \
+          --language=node \
+          --id=pyright \
+          --package-name=pyright \
+          --entry="pyright" \
+          --types=python
+    - run: |
+        git remote set-url origin https://x-access-token:$GH_TOKEN@github.com/$GITHUB_REPOSITORY
+        git push origin HEAD:refs/heads/main --tags
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
