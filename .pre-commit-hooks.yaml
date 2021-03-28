@@ -5,4 +5,4 @@
     'types': [python]
     args: []
     require_serial: false
-    additional_dependencies: ["pyright@1.1.99"]
+    additional_dependencies: ["pyright@1.1.100"]
