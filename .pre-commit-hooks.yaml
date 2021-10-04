@@ -6,4 +6,4 @@
     args: []
     require_serial: false
     additional_dependencies: ["pyright@1.1.173"]
-    minimum_pre_commit_version: 0
+    minimum_pre_commit_version: "0"
