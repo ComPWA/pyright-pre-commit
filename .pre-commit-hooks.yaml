@@ -5,5 +5,5 @@
     'types': [python]
     args: []
     require_serial: false
-    additional_dependencies: ["pyright@1.1.193"]
+    additional_dependencies: ["pyright@1.1.194"]
     minimum_pre_commit_version: '0'
